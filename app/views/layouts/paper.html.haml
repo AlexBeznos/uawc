@@ -15,8 +15,24 @@
 
   %body
 
-    = yield
+    .container
+      = render 'shared/alert'
+      = yield
 
+    %hr
+    .container
+      %span.center-block{:style => 'text-aling: center;'} 2015
+
+
+    / Fixed navbar
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          =link_to 'UAWC', root_path, :class => "navbar-brand"
     /
       Javascripts
       \==================================================

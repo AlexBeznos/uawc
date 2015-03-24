@@ -1,6 +1,7 @@
 /* Paper
  * Bootswatch
  *= require_self
+ *= require sitemap
  *= require paper/loader
  *= require paper/bootswatch
 */

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Url:
+  = @sitemap.url
+%p
+  %b Xml:
+  = @sitemap.xml
+
+= link_to 'Edit', edit_sitemap_path(@sitemap)
+\|
+= link_to 'Back', sitemaps_path

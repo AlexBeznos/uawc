@@ -1,0 +1,4 @@
+= form_for @sitemap, :html => {:class => 'form-inline'} do |f|
+  .form-group
+    = f.text_field :url, class: 'form-control', placeholder: 'URL'
+    = f.submit 'Generate', :class => 'btn btn-success btn-inverse'
