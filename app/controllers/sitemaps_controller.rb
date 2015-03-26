@@ -14,7 +14,7 @@ class SitemapsController < ApplicationController
     if @sitemap.save
       redirect_to @sitemap, notice: 'Sitemap was successfully created.'
     else
-      render :new
+      redirect_to root_path, :alert => @sitemap.errors.full_messages.first
     end
   end
 

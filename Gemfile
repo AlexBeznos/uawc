@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'haml-rails'
 gem 'active_type'
+gem "validate_url"
+
 
 # bootswach
 gem 'twitter-bootswatch-rails'
