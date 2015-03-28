@@ -5,7 +5,6 @@ require 'open_uri_redirections'
 class Spider
   include UrlCheckable
 
-  attr_writer :home_page
   attr_reader :founded_urls
 
   def initialize(home_page)
