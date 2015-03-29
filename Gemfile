@@ -36,6 +36,10 @@ gem 'twitter-bootswatch-rails-helpers'
 # configuration
 gem 'figaro'
 
+# delayed jobs
+gem 'delayed_job_active_record'
+gem 'daemons'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

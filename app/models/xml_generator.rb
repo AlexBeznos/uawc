@@ -45,7 +45,7 @@ class XmlGenerator
       end
     end
 
-    @sitemap_urls.push(save_file("sitemaps/#{@id}.xml", builder.to_xml))
+    @sitemap_urls.push(save_file("sitemap-xml/#{@id}.xml", builder.to_xml))
   end
 
   def create_few_files(separators)
@@ -67,7 +67,7 @@ class XmlGenerator
     end
 
     xmls.each_with_index do |xml, index|
-      @sitemap_urls.push(save_file("sitemaps/#{@id}-#{index}.xml", xml.to_xml))
+      @sitemap_urls.push(save_file("sitemap-xml/#{@id}-#{index}.xml", xml.to_xml))
     end
 
     add_storage_file if xmls.length > 1
@@ -84,7 +84,7 @@ class XmlGenerator
       end
     end
 
-    @sitemap_urls.push(save_file("sitemaps/#{@id}.xml", builder.to_xml))
+    @sitemap_urls.push(save_file("sitemap-xml/#{@id}.xml", builder.to_xml))
   end
 
   def make_arrays(sep)

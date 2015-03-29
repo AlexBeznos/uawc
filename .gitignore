@@ -19,4 +19,4 @@
 /config/application.yml
 
 # Ignore sitemaps
-/public/sitemaps
+/public/sitemap-xml
