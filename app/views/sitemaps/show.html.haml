@@ -5,4 +5,5 @@
   = @sitemap.url
 %p
   %b Xml:
-  = @sitemap.xml
+  - @sitemap.xml.each_with_index do |xml, index|
+    =link_to "xml ##{index}", root_url + xml, {target: '_blank'}

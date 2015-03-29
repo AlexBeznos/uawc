@@ -45,11 +45,7 @@ class XmlGenerator
       end
     end
 
-    directory = "public/"
-    path = File.join(directory, "#{@id}.xml")
-    File.open(path, "wb") { |f| f.write(builder.to_xml) }
-
-    @sitemap_urls.push(path)
+    @sitemap_urls.push(save_file("#{@id}.xml", builder.to_xml))
   end
 
   def create_few_files(separators)
@@ -71,11 +67,7 @@ class XmlGenerator
     end
 
     xmls.each_with_index do |xml, index|
-      directory = "public/"
-      path = File.join(directory, "#{@id}-#{index}.xml")
-      File.open(path, "wb") { |f| f.write(xml.to_xml) }
-
-      @sitemap_urls.push(path)
+      @sitemap_urls.push(save_file("#{@id}-#{index}.xml", xml.to_xml))
     end
 
     add_storage_file if xmls.length > 1
@@ -92,11 +84,7 @@ class XmlGenerator
       end
     end
 
-    directory = "public/"
-    path = File.join(directory, "#{@id}.xml")
-    File.open(path, "wb") { |f| f.write(builder.to_xml) }
-
-    @sitemap_urls.push(path)
+    @sitemap_urls.push(save_file("#{@id}.xml", builder.to_xml))
   end
 
   def make_arrays(sep)
@@ -111,5 +99,12 @@ class XmlGenerator
     arr.push(@founded_urls[(sep.last+1)..@founded_urls.length+1])
 
     arr
+  end
+
+  def save_file(name, xml)
+    directory = "public/"
+    path = File.join(directory, name)
+    File.open(path, "wb") { |f| f.write(xml) }
+    name
   end
 end
