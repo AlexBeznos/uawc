@@ -1,5 +1,5 @@
 = form_for @sitemap, :html => {:class => 'form-inline'} do |f|
   .form-group
-    = f.text_field :url, class: 'form-control', placeholder: 'URL'
-    = f.submit 'Generate', :class => 'btn btn-success btn-inverse'
+    = f.text_field :url, class: 'form-control', placeholder: 'URL', name: 'url'
+    = f.submit 'Generate', {:class => 'btn btn-success btn-inverse', :id => 'submit', :data => {:loading => {:text => "Loading"}}, :autocompite => "off"}
     %p.helper-block example http://uawebchallenge.com

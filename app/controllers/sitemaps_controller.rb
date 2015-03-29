@@ -1,5 +1,7 @@
 class SitemapsController < ApplicationController
-  before_action :set_sitemap, only: [:show, :edit, :update, :destroy]
+  before_action :set_sitemap, only: [:show]
+  before_filter :find_simular_sitemap, only: :create
+  respond_to :html
 
   def show
   end
@@ -12,9 +14,9 @@ class SitemapsController < ApplicationController
     @sitemap = Sitemap.new(sitemap_params)
 
     if @sitemap.save
-      redirect_to @sitemap, notice: 'Sitemap was successfully created.'
+      render_sitemap
     else
-      redirect_to root_path, :alert => @sitemap.errors.full_messages.first
+      render json: {errors: @sitemap.errors}, status: :bad_request
     end
   end
 
@@ -24,6 +26,17 @@ class SitemapsController < ApplicationController
     end
 
     def sitemap_params
-      params.require(:sitemap).permit(:url)
+      params.permit(:url)
+    end
+
+    def find_simular_sitemap
+      @sitemap = Sitemap.where('url like ?', "%#{sitemap_params[:url]}%").first
+      if @sitemap
+        render_sitemap
+      end
+    end
+
+    def render_sitemap
+      respond_with(@sitemap, :layout => false)
     end
 end

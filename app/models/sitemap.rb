@@ -10,10 +10,10 @@ class Sitemap < ActiveRecord::Base
 
   private
   def fix_url
+    self.url.delete!(' ');
     encoded_uri = URI.encode(self.url)
     url = URI(encoded_uri)
     self.url = "#{url.scheme}://#{url.host}#{url.path.empty? ? url.path + '/' : url.path}"
-    puts self.url
     self.url.concat('/') if self.url[self.url.size - 1] != '/'
   end
 
@@ -26,16 +26,13 @@ class Sitemap < ActiveRecord::Base
   def find_urls
     @spider = Spider.new(self.url)
     @spider.turn_on
-    puts '+++++++++++++++'
-    puts 'spider done'
-    puts @spider.founded_urls
+    Rails.logger.info "spider done, founded urls: #{@spider.founded_urls}"
   end
 
   def generate_xml
     xml = XmlGenerator.new(@spider.founded_urls, self.id)
-    puts 'Xml generatrion'
     xml.generate
-    puts xml.sitemap_urls
+    Rails.logger.info "xml generation done, urls: #{xml.sitemap_urls}"
     self.xml = xml.sitemap_urls
     self.save
   end

@@ -1,0 +1,5 @@
+%p URL: #{@sitemap.url}
+
+%ul.list-group
+  - @sitemap.xml.each_with_index do |xml_path, index|
+    %li.list-group-item= link_to "XML Sitemap ##{index + 1}", root_url + xml_path

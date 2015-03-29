@@ -17,3 +17,6 @@
 
 # Figaro variables
 /config/application.yml
+
+# Ignore sitemaps
+/public/sitemaps
